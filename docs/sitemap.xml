@@ -6,6 +6,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>/arch/</loc>
+     <lastmod>2018-06-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>/about/</loc>
      <lastmod>2018-06-26</lastmod>
      <changefreq>daily</changefreq>

@@ -2,22 +2,37 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Moo Docs\n\n\ntest", 
+            "text": "Moo Docs\n\n\nCows go moo", 
             "title": "Home"
         }, 
         {
             "location": "/#moo-docs", 
-            "text": "test", 
+            "text": "Cows go moo", 
             "title": "Moo Docs"
         }, 
         {
+            "location": "/arch/", 
+            "text": "Arch Linux\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/Installation_guide\n\n\n\n\nWIP...\n\n\ni3-gaps", 
+            "title": "Arch"
+        }, 
+        {
+            "location": "/arch/#arch-linux", 
+            "text": "Source:  https://wiki.archlinux.org/index.php/Installation_guide   WIP...", 
+            "title": "Arch Linux"
+        }, 
+        {
+            "location": "/arch/#i3-gaps", 
+            "text": "", 
+            "title": "i3-gaps"
+        }, 
+        {
             "location": "/about/", 
-            "text": "About", 
+            "text": "About\n\n\nThis is a personal wiki, the main goal is to document stuff I do so I can quickly look it up in future instead of googling every time.", 
             "title": "About"
         }, 
         {
             "location": "/about/#about", 
-            "text": "", 
+            "text": "This is a personal wiki, the main goal is to document stuff I do so I can quickly look it up in future instead of googling every time.", 
             "title": "About"
         }
     ]
