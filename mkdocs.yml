@@ -1,0 +1,40 @@
+site_name: Moo Docs
+docs_dir: mkdocs
+site_dir: docs
+
+pages:
+  - Home: index.md
+  - About: about.md
+
+theme:
+  name: 'material'
+  palette:
+    primary: light blue
+    accent: blue
+  feature:
+    tabs: true
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  social:
+    - type: twitter
+      link: https://twitter.com/EdyTheCow
