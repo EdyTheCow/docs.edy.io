@@ -162,6 +162,16 @@ Installing the package
 pacman -S networkmanager
 ```
 
+Start the service
+```
+systemctl start NetworkManager.service
+```
+
+Enable to start it on boot
+```
+systemctl enable NetworkManager.service
+```
+
 ### Aura package manager
 
 !!! note ""

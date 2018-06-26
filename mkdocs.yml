@@ -1,18 +1,26 @@
-site_name: Moo Docs
+site_name: 'Moo Docs'
+site_description: 'Personal wiki for random stuff'
+site_author: 'Edy'
+site_url: 'https://docs.edy.io'
+
 docs_dir: mkdocs
 site_dir: docs
 
 pages:
   - Home: index.md
-  - Arch Linux: arch-linux.md
-  - DockerPlex: docker-plex.md
+  - Other:
+    - DockerPlex: other/docker-plex.md
+    - Google Analytics: other/google-analytics.md
   - About: about.md
+  - Linux:
+    - Linux Basics: linux/linux-basics.md
+    - Arch Linux: linux/arch-linux.md
 
 theme:
   name: 'material'
   palette:
-    primary: light blue
-    accent: blue
+    primary: 'light blue'
+    accent: 'blue'
   feature:
     tabs: true
 
@@ -40,3 +48,7 @@ extra:
   social:
     - type: twitter
       link: https://twitter.com/EdyTheCow
+
+google_analytics:
+  - 'UA-121434074-1'
+  - 'auto'
