@@ -4,7 +4,8 @@ site_dir: docs
 
 pages:
   - Home: index.md
-  - Arch Linux: arch_linux.md
+  - Arch Linux: arch-linux.md
+  - DockerPlex: docker-plex.md
   - About: about.md
 
 theme:

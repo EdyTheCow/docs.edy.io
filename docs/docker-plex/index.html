@@ -36,7 +36,7 @@
     
     
       
-        <title>Arch Linux - Moo Docs</title>
+        <title>DockerPlex - Moo Docs</title>
       
     
     
@@ -79,7 +79,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#arch-linux" tabindex="1" class="md-skip">
+      <a href="#docker-plex" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -105,7 +105,7 @@
                 Moo Docs
               </span>
               <span class="md-header-nav__topic">
-                Arch Linux
+                DockerPlex
               </span>
             
           
@@ -171,6 +171,8 @@
       
         
       
+        
+      
     </ul>
   </div>
 </nav>
@@ -210,6 +212,18 @@
       
       
 
+
+  <li class="md-nav__item">
+    <a href="../arch-linux/" title="Arch Linux" class="md-nav__link">
+      Arch Linux
+    </a>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
@@ -220,65 +234,9 @@
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Arch Linux
-      </label>
-    
-    <a href="./" title="Arch Linux" class="md-nav__link md-nav__link--active">
-      Arch Linux
+    <a href="./" title="DockerPlex" class="md-nav__link md-nav__link--active">
+      DockerPlex
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" title="Installation" class="md-nav__link">
-    Installation
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#chroot" title="Chroot" class="md-nav__link">
-    Chroot
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#grub" title="Grub" class="md-nav__link">
-    Grub
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#i3-gaps" title="i3-gaps" class="md-nav__link">
-    i3-gaps
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
     
   </li>
 
@@ -312,49 +270,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" title="Installation" class="md-nav__link">
-    Installation
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#chroot" title="Chroot" class="md-nav__link">
-    Chroot
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#grub" title="Grub" class="md-nav__link">
-    Grub
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#i3-gaps" title="i3-gaps" class="md-nav__link">
-    i3-gaps
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -366,126 +281,7 @@
               
                 
                 
-                <h1 id="arch-linux">Arch Linux<a class="headerlink" href="#arch-linux" title="Permanent link">&para;</a></h1>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<div class="admonition note">
-<p>Source: <a href="https://wiki.archlinux.org/index.php/Installation_guide">https://wiki.archlinux.org/index.php/Installation_guide</a></p>
-</div>
-<p>Set keyboard to norwegian
-<div class="highlight"><pre><span></span>loadkeys no-latin1
-</pre></div></p>
-<p>Update the system clock
-<div class="highlight"><pre><span></span>timedatectl set-ntp true
-</pre></div></p>
-<p>List all current partitions
-<div class="highlight"><pre><span></span>fdisk -l
-</pre></div></p>
-<p>Set partitions and swap</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Replace [DRIVE] with one of drives listed in <b>fdisk -l</b> Example: sda</p>
-</div>
-<div class="highlight"><pre><span></span>cfdisk /dev/[DRIVE]
-</pre></div>
-
-<p>Once drive is selected, create two partitions</p>
-<table>
-<thead>
-<tr>
-<th>Size</th>
-<th>Type</th>
-<th>Bootable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>All but 8GB</td>
-<td>Default</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>8GB</td>
-<td>Swap</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
-<p>Format partitions</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Make sure to put <b>1</b> after the [DRIVE]. We're formatting a partition. Not the whole drive. (Same with swap)</p>
-</div>
-<div class="highlight"><pre><span></span>mkfs.ext4 dev/[DRIVE]1
-</pre></div>
-
-<p>Set swap
-<div class="highlight"><pre><span></span>mkswap /dev/[DRIVE]2
-</pre></div></p>
-<div class="highlight"><pre><span></span>swapon /dev/[DRIVE]2
-</pre></div>
-
-<p>Mount the drive
-<div class="highlight"><pre><span></span>mount /dev/[DRIVE] /mnt
-</pre></div></p>
-<p>Install base system
-<div class="highlight"><pre><span></span>pacstrap -i /mnt base base-devel
-</pre></div></p>
-<p>Generate fstab file
-<div class="highlight"><pre><span></span>genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab
-</pre></div></p>
-<h3 id="chroot">Chroot<a class="headerlink" href="#chroot" title="Permanent link">&para;</a></h3>
-<p>Chroot into the new system
-<div class="highlight"><pre><span></span>arch-chroot /mnt
-</pre></div></p>
-<p>Set the clock
-<div class="highlight"><pre><span></span>ln -sf /usr/share/zoneoinfo/Europe/Oslo /etc/localtime
-</pre></div>
-<div class="highlight"><pre><span></span>hwclock --systohc
-</pre></div></p>
-<p>Set locale
-<div class="highlight"><pre><span></span>echo en_US.UTF-8 UTF-8 &gt; /etc/locale.gen
-</pre></div></p>
-<div class="highlight"><pre><span></span>locale-gen
-</pre></div>
-
-<div class="highlight"><pre><span></span>echo LANG=en_US.UTF-8 &gt; /etc/locale.conf
-</pre></div>
-
-<div class="highlight"><pre><span></span>echo KEYMAP=no-latin1 &gt; /etc/vconsole.conf
-</pre></div>
-
-<p>Network configuration
-<div class="highlight"><pre><span></span>echo moorch &gt; /etc/hostname
-</pre></div></p>
-<div class="highlight"><pre><span></span>echo &quot;127.0.0.1   localhost
-::1       localhost
-127.0.1.1     moorch.localdomain moorch&quot; &gt; /etc/hosts
-</pre></div>
-
-<h3 id="grub">Grub<a class="headerlink" href="#grub" title="Permanent link">&para;</a></h3>
-<div class="admonition note">
-<p>Source: <a href="https://wiki.archlinux.org/index.php/GRUB">https://wiki.archlinux.org/index.php/GRUB</a></p>
-</div>
-<p>Install grub
-<div class="highlight"><pre><span></span>pacman -S grub
-</pre></div></p>
-<div class="highlight"><pre><span></span>grub-install --target=i386-pc /dev/[DRIVE]
-</pre></div>
-
-<div class="highlight"><pre><span></span>grub-mkconfig -o /boot/grub/grub.cfg
-</pre></div>
-
-<p>Set the root password
-<div class="highlight"><pre><span></span>passwd
-</pre></div></p>
-<p>TODO:</p>
-<ul>
-<li>Microcode (<a href="https://wiki.archlinux.org/index.php/Microcode#Enabling_Intel_microcode_updates">https://wiki.archlinux.org/index.php/Microcode#Enabling_Intel_microcode_updates</a>)</li>
-<li>Issues with internet connection (<a href="https://wiki.archlinux.org/index.php/Network_configuration">https://wiki.archlinux.org/index.php/Network_configuration</a>)</li>
-<li>Package manager aura (<a href="https://aur.archlinux.org/packages/aura-bin/">https://aur.archlinux.org/packages/aura-bin/</a>)</li>
-<li>Gist for more info</li>
-</ul>
-<h2 id="i3-gaps">i3-gaps<a class="headerlink" href="#i3-gaps" title="Permanent link">&para;</a></h2>
+                <h1 id="docker-plex">Docker Plex<a class="headerlink" href="#docker-plex" title="Permanent link">&para;</a></h1>
                 
                   
                 
@@ -506,7 +302,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href=".." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../arch-linux/" title="Arch Linux" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -515,7 +311,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Home
+                Arch Linux
               </span>
             </div>
           </a>
