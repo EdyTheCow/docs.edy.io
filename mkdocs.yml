@@ -4,7 +4,7 @@ site_dir: docs
 
 pages:
   - Home: index.md
-  - Arch: arch.md
+  - Arch Linux: arch_linux.md
   - About: about.md
 
 theme:
