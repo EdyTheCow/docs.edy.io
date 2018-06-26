@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+
+  watch:
+    image: squidfunk/mkdocs-material
+    stdin_open: true
+    tty: true
+    ports:
+      - "8000:8000"
+    volumes:
+      - /home/edy/git/docs.edy.io:/docs
+
+  build:
+    image: squidfunk/mkdocs-material
+    command: build
+    stdin_open: true
+    tty: true
+    volumes:
+      - /home/edy/git/docs.edy.io:/docs

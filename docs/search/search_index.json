@@ -1,0 +1,24 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Moo Docs\n\n\ntest", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#moo-docs", 
+            "text": "test", 
+            "title": "Moo Docs"
+        }, 
+        {
+            "location": "/about/", 
+            "text": "About", 
+            "title": "About"
+        }, 
+        {
+            "location": "/about/#about", 
+            "text": "", 
+            "title": "About"
+        }
+    ]
+}

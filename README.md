@@ -8,14 +8,14 @@ Clone repo<br />
 git clone https://github.com/EdyTheCow/docs.edy.io.git
 ```
 
-Start development server. Make sure you're in the same dir as mkdocs.yml<br />
+Start development server<br />
 ```
-docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
+docker-compose up watch
 ```
 
-Build docs. Make sure you're in the same dir as mkdocs.yml<br />
+Build docs<br />
 ```
-docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material build
+docker-compose up build
 ```
 
 ## Resources
