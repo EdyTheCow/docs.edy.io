@@ -522,6 +522,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#update-the-system" title="Update the system" class="md-nav__link">
+    Update the system
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-new-user" title="Add new user" class="md-nav__link">
+    Add new user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#network-manager" title="Network Manager" class="md-nav__link">
     Network Manager
   </a>
@@ -769,6 +783,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#update-the-system" title="Update the system" class="md-nav__link">
+    Update the system
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-new-user" title="Add new user" class="md-nav__link">
+    Add new user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#network-manager" title="Network Manager" class="md-nav__link">
     Network Manager
   </a>
@@ -970,18 +998,39 @@
 
 <p>Reboot the system</p>
 <h2 id="post-installation">Post-Installation<a class="headerlink" href="#post-installation" title="Permanent link">&para;</a></h2>
+<h3 id="update-the-system">Update the system<a class="headerlink" href="#update-the-system" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span>pacman -Sy
+</pre></div>
+
+<h3 id="add-new-user">Add new user<a class="headerlink" href="#add-new-user" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span>useradd --create-home edy
+</pre></div>
+
+<p>Set password
+<div class="highlight"><pre><span></span>passwd edy
+</pre></div></p>
+<p>Add user to sudo
+<div class="highlight"><pre><span></span>usermod -aG sudo edy
+</pre></div></p>
+<p>Edit sudoers file
+<div class="highlight"><pre><span></span>EDITOR=vim visudo
+</pre></div></p>
+<p>Add user under privileges section
+<div class="highlight"><pre><span></span>edy ALL=(ALL) ALL
+</pre></div></p>
+<p><b>Switch to newly created user</b></p>
 <h3 id="network-manager">Network Manager<a class="headerlink" href="#network-manager" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p>Source: <a href="https://wiki.archlinux.org/index.php/NetworkManager">https://wiki.archlinux.org/index.php/NetworkManager</a></p>
 </div>
 <p>Installing the package
-<div class="highlight"><pre><span></span>pacman -S networkmanager
+<div class="highlight"><pre><span></span>sudo pacman -S networkmanager
 </pre></div></p>
 <p>Start the service
-<div class="highlight"><pre><span></span>systemctl start NetworkManager.service
+<div class="highlight"><pre><span></span>sudo systemctl start NetworkManager.service
 </pre></div></p>
 <p>Enable to start it on boot
-<div class="highlight"><pre><span></span>systemctl enable NetworkManager.service
+<div class="highlight"><pre><span></span>sudo systemctl enable NetworkManager.service
 </pre></div></p>
 <h3 id="aura-package-manager">Aura package manager<a class="headerlink" href="#aura-package-manager" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
@@ -998,17 +1047,17 @@
 <p>Source: <a href="https://wiki.archlinux.org/index.php/Xorg">https://wiki.archlinux.org/index.php/Xorg</a></p>
 </div>
 <p>Installation
-<div class="highlight"><pre><span></span>pacman -S xorg-server xorg-apps
+<div class="highlight"><pre><span></span>sudo pacman -S xorg-server xorg-apps
 </pre></div></p>
 <h4 id="nvidia-drivers">Nvidia drivers<a class="headerlink" href="#nvidia-drivers" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p>Source: <a href="https://wiki.archlinux.org/index.php/NVIDIA">https://wiki.archlinux.org/index.php/NVIDIA</a></p>
 </div>
 <p>Installation
-<div class="highlight"><pre><span></span>pacman -S nvidia
+<div class="highlight"><pre><span></span>sudo pacman -S nvidia
 </pre></div></p>
 <p>32-bit application support drivers
-<div class="highlight"><pre><span></span>pacman -S lib32-nvidia-utils lib32-nvidia-390xx-utils
+<div class="highlight"><pre><span></span>sudo pacman -S lib32-nvidia-utils lib32-nvidia-390xx-utils
 </pre></div></p>
 <p><b>Reboot required</b></p>
 <p>Configure xorg
@@ -1020,6 +1069,9 @@
 </div>
 <p>Installation
 <div class="highlight"><pre><span></span>
+</pre></div></p>
+<p>Start xorg
+<div class="highlight"><pre><span></span>startx
 </pre></div></p>
 <h2 id="other-resources">Other resources<a class="headerlink" href="#other-resources" title="Permanent link">&para;</a></h2>
 <ul>

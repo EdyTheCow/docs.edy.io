@@ -152,6 +152,39 @@ Reboot the system
 
 ## Post-Installation
 
+### Update the system
+```
+pacman -Sy
+```
+
+### Add new user
+```
+useradd --create-home edy
+```
+
+Set password
+```
+passwd edy
+```
+
+Add user to sudo
+```
+usermod -aG sudo edy
+```
+
+Edit sudoers file
+```
+EDITOR=vim visudo
+```
+
+Add user under privileges section
+```
+edy ALL=(ALL) ALL
+```
+
+<b>Switch to newly created user</b>
+
+
 ### Network Manager
 
 !!! note ""
@@ -159,17 +192,17 @@ Reboot the system
 
 Installing the package
 ```
-pacman -S networkmanager
+sudo pacman -S networkmanager
 ```
 
 Start the service
 ```
-systemctl start NetworkManager.service
+sudo systemctl start NetworkManager.service
 ```
 
 Enable to start it on boot
 ```
-systemctl enable NetworkManager.service
+sudo systemctl enable NetworkManager.service
 ```
 
 ### Aura package manager
@@ -190,7 +223,7 @@ TODO:
 
 Installation
 ```
-pacman -S xorg-server xorg-apps
+sudo pacman -S xorg-server xorg-apps
 ```
 
 
@@ -201,12 +234,12 @@ pacman -S xorg-server xorg-apps
 
 Installation
 ```
-pacman -S nvidia
+sudo pacman -S nvidia
 ```
 
 32-bit application support drivers
 ```
-pacman -S lib32-nvidia-utils lib32-nvidia-390xx-utils
+sudo pacman -S lib32-nvidia-utils lib32-nvidia-390xx-utils
 ```
 
 <b>Reboot required</b>
@@ -223,6 +256,11 @@ nvidia-xconfig
 
 Installation
 ```
+```
+
+Start xorg
+```
+startx
 ```
 
 ## Other resources

@@ -77,7 +77,7 @@
         }, 
         {
             "location": "/linux/arch-linux/", 
-            "text": "Arch Linux\n\n\nPre-Installation\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/Installation_guide\n\n\n\n\nSet keyboard to norwegian\n\n\nloadkeys no-latin1\n\n\n\n\nUpdate the system clock\n\n\ntimedatectl set-ntp true\n\n\n\n\nPartition the disks\n\n\nList all current partitions\n\nfdisk -l\n\n\n\nSet partitions and swap\n\n\n\n\nNote\n\n\nReplace [DISK] with one of disks listed in \nfdisk -l\n Example: sda\n\n\n\n\ncfdisk /dev/[DISK]\n\n\n\n\nOnce disk is selected, create two partitions\n\n\n\n\n\n\n\n\nSize\n\n\nType\n\n\nBootable\n\n\n\n\n\n\n\n\n\n\nAll but 8GB\n\n\nDefault\n\n\nYes\n\n\n\n\n\n\n8GB\n\n\nSwap\n\n\nNo\n\n\n\n\n\n\n\n\nFormat partitions\n\n\n\n\nWarning\n\n\nMake sure to put \n1\n after the [DISK]. We're formatting a partition. Not the whole disk. (Same with swap)\n\n\n\n\nmkfs.ext4 dev/[DISK]1\n\n\n\n\nSetup swap\n\nmkswap /dev/[DISK]2\n\n\n\nswapon /dev/[DISK]2\n\n\n\n\nInstallation\n\n\nMount the drive\n\n\nmount /dev/[DISK] /mnt\n\n\n\n\nInstall base system\n\n\npacstrap -i /mnt base base-devel\n\n\n\n\nConfiguration\n\n\nGenerate fstab file\n\n\ngenfstab -U -p /mnt \n /mnt/etc/fstab\n\n\n\n\nChroot\n\n\narch-chroot /mnt\n\n\n\n\nSet the clock\n\n\nln -sf /usr/share/zoneoinfo/Europe/Oslo /etc/localtime\n\n\n\nhwclock --systohc\n\n\n\nSet locale\n\n\necho en_US.UTF-8 UTF-8 \n /etc/locale.gen\n\n\n\n\nlocale-gen\n\n\n\n\necho LANG=en_US.UTF-8 \n /etc/locale.conf\n\n\n\n\necho KEYMAP=no-latin1 \n /etc/vconsole.conf\n\n\n\n\nNetwork configuration\n\n\necho moorch \n /etc/hostname\n\n\n\n\necho \n127.0.0.1   localhost\n::1       localhost\n127.0.1.1     moorch.localdomain moorch\n \n /etc/hosts\n\n\n\n\nGrub\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/GRUB\n\n\n\n\nInstall grub\n\n\npacman -S grub\n\n\n\n\ngrub-install --target=i386-pc /dev/[DISK]\n\n\n\n\ngrub-mkconfig -o /boot/grub/grub.cfg\n\n\n\n\nMicrocode\n\npacman -S intel-ucode \n\n\n\ngrub-mkconfig -o /boot/grub/grub.cfg\n\n\n\n\nSet the root password\n\n\npasswd\n\n\n\n\nReboot the system\n\n\nPost-Installation\n\n\nNetwork Manager\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/NetworkManager\n\n\n\n\nInstalling the package\n\npacman -S networkmanager\n\n\n\nStart the service\n\nsystemctl start NetworkManager.service\n\n\n\nEnable to start it on boot\n\nsystemctl enable NetworkManager.service\n\n\n\nAura package manager\n\n\n\n\nSource: \nhttps://aur.archlinux.org/packages/aura-bin/\n\n\n\n\nTODO:\n\n\n\n\nThis needs to be cloned and then manually installed\n\n\nAlias auro with pacman so you can do -S for official and -A for AUR \n\n\nGist for more info\n\n\n\n\nXorg\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/Xorg\n\n\n\n\nInstallation\n\npacman -S xorg-server xorg-apps\n\n\n\nNvidia drivers\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/NVIDIA\n\n\n\n\nInstallation\n\npacman -S nvidia\n\n\n\n32-bit application support drivers\n\npacman -S lib32-nvidia-utils lib32-nvidia-390xx-utils\n\n\n\nReboot required\n\n\nConfigure xorg\n\nnvidia-xconfig\n\n\n\ni3-gaps\n\n\n\n\nSource: \nhttps://i3wm.org/\n\n\n\n\nInstallation\n\n\n\n\n\nOther resources\n\n\n\n\nhttps://wiki.archlinux.org/index.php/Network_configuration", 
+            "text": "Arch Linux\n\n\nPre-Installation\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/Installation_guide\n\n\n\n\nSet keyboard to norwegian\n\n\nloadkeys no-latin1\n\n\n\n\nUpdate the system clock\n\n\ntimedatectl set-ntp true\n\n\n\n\nPartition the disks\n\n\nList all current partitions\n\nfdisk -l\n\n\n\nSet partitions and swap\n\n\n\n\nNote\n\n\nReplace [DISK] with one of disks listed in \nfdisk -l\n Example: sda\n\n\n\n\ncfdisk /dev/[DISK]\n\n\n\n\nOnce disk is selected, create two partitions\n\n\n\n\n\n\n\n\nSize\n\n\nType\n\n\nBootable\n\n\n\n\n\n\n\n\n\n\nAll but 8GB\n\n\nDefault\n\n\nYes\n\n\n\n\n\n\n8GB\n\n\nSwap\n\n\nNo\n\n\n\n\n\n\n\n\nFormat partitions\n\n\n\n\nWarning\n\n\nMake sure to put \n1\n after the [DISK]. We're formatting a partition. Not the whole disk. (Same with swap)\n\n\n\n\nmkfs.ext4 dev/[DISK]1\n\n\n\n\nSetup swap\n\nmkswap /dev/[DISK]2\n\n\n\nswapon /dev/[DISK]2\n\n\n\n\nInstallation\n\n\nMount the drive\n\n\nmount /dev/[DISK] /mnt\n\n\n\n\nInstall base system\n\n\npacstrap -i /mnt base base-devel\n\n\n\n\nConfiguration\n\n\nGenerate fstab file\n\n\ngenfstab -U -p /mnt \n /mnt/etc/fstab\n\n\n\n\nChroot\n\n\narch-chroot /mnt\n\n\n\n\nSet the clock\n\n\nln -sf /usr/share/zoneoinfo/Europe/Oslo /etc/localtime\n\n\n\nhwclock --systohc\n\n\n\nSet locale\n\n\necho en_US.UTF-8 UTF-8 \n /etc/locale.gen\n\n\n\n\nlocale-gen\n\n\n\n\necho LANG=en_US.UTF-8 \n /etc/locale.conf\n\n\n\n\necho KEYMAP=no-latin1 \n /etc/vconsole.conf\n\n\n\n\nNetwork configuration\n\n\necho moorch \n /etc/hostname\n\n\n\n\necho \n127.0.0.1   localhost\n::1       localhost\n127.0.1.1     moorch.localdomain moorch\n \n /etc/hosts\n\n\n\n\nGrub\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/GRUB\n\n\n\n\nInstall grub\n\n\npacman -S grub\n\n\n\n\ngrub-install --target=i386-pc /dev/[DISK]\n\n\n\n\ngrub-mkconfig -o /boot/grub/grub.cfg\n\n\n\n\nMicrocode\n\npacman -S intel-ucode \n\n\n\ngrub-mkconfig -o /boot/grub/grub.cfg\n\n\n\n\nSet the root password\n\n\npasswd\n\n\n\n\nReboot the system\n\n\nPost-Installation\n\n\nUpdate the system\n\n\npacman -Sy\n\n\n\n\nAdd new user\n\n\nuseradd --create-home edy\n\n\n\n\nSet password\n\npasswd edy\n\n\n\nAdd user to sudo\n\nusermod -aG sudo edy\n\n\n\nEdit sudoers file\n\nEDITOR=vim visudo\n\n\n\nAdd user under privileges section\n\nedy ALL=(ALL) ALL\n\n\n\nSwitch to newly created user\n\n\nNetwork Manager\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/NetworkManager\n\n\n\n\nInstalling the package\n\nsudo pacman -S networkmanager\n\n\n\nStart the service\n\nsudo systemctl start NetworkManager.service\n\n\n\nEnable to start it on boot\n\nsudo systemctl enable NetworkManager.service\n\n\n\nAura package manager\n\n\n\n\nSource: \nhttps://aur.archlinux.org/packages/aura-bin/\n\n\n\n\nTODO:\n\n\n\n\nThis needs to be cloned and then manually installed\n\n\nAlias auro with pacman so you can do -S for official and -A for AUR \n\n\nGist for more info\n\n\n\n\nXorg\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/Xorg\n\n\n\n\nInstallation\n\nsudo pacman -S xorg-server xorg-apps\n\n\n\nNvidia drivers\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/NVIDIA\n\n\n\n\nInstallation\n\nsudo pacman -S nvidia\n\n\n\n32-bit application support drivers\n\nsudo pacman -S lib32-nvidia-utils lib32-nvidia-390xx-utils\n\n\n\nReboot required\n\n\nConfigure xorg\n\nnvidia-xconfig\n\n\n\ni3-gaps\n\n\n\n\nSource: \nhttps://i3wm.org/\n\n\n\n\nInstallation\n\n\n\n\n\nStart xorg\n\nstartx\n\n\n\nOther resources\n\n\n\n\nhttps://wiki.archlinux.org/index.php/Network_configuration", 
             "title": "Arch Linux"
         }, 
         {
@@ -181,8 +181,18 @@
             "title": "Post-Installation"
         }, 
         {
+            "location": "/linux/arch-linux/#update-the-system", 
+            "text": "pacman -Sy", 
+            "title": "Update the system"
+        }, 
+        {
+            "location": "/linux/arch-linux/#add-new-user", 
+            "text": "useradd --create-home edy  Set password passwd edy  Add user to sudo usermod -aG sudo edy  Edit sudoers file EDITOR=vim visudo  Add user under privileges section edy ALL=(ALL) ALL  Switch to newly created user", 
+            "title": "Add new user"
+        }, 
+        {
             "location": "/linux/arch-linux/#network-manager", 
-            "text": "Source:  https://wiki.archlinux.org/index.php/NetworkManager   Installing the package pacman -S networkmanager  Start the service systemctl start NetworkManager.service  Enable to start it on boot systemctl enable NetworkManager.service", 
+            "text": "Source:  https://wiki.archlinux.org/index.php/NetworkManager   Installing the package sudo pacman -S networkmanager  Start the service sudo systemctl start NetworkManager.service  Enable to start it on boot sudo systemctl enable NetworkManager.service", 
             "title": "Network Manager"
         }, 
         {
@@ -192,17 +202,17 @@
         }, 
         {
             "location": "/linux/arch-linux/#xorg", 
-            "text": "Source:  https://wiki.archlinux.org/index.php/Xorg   Installation pacman -S xorg-server xorg-apps", 
+            "text": "Source:  https://wiki.archlinux.org/index.php/Xorg   Installation sudo pacman -S xorg-server xorg-apps", 
             "title": "Xorg"
         }, 
         {
             "location": "/linux/arch-linux/#nvidia-drivers", 
-            "text": "Source:  https://wiki.archlinux.org/index.php/NVIDIA   Installation pacman -S nvidia  32-bit application support drivers pacman -S lib32-nvidia-utils lib32-nvidia-390xx-utils  Reboot required  Configure xorg nvidia-xconfig", 
+            "text": "Source:  https://wiki.archlinux.org/index.php/NVIDIA   Installation sudo pacman -S nvidia  32-bit application support drivers sudo pacman -S lib32-nvidia-utils lib32-nvidia-390xx-utils  Reboot required  Configure xorg nvidia-xconfig", 
             "title": "Nvidia drivers"
         }, 
         {
             "location": "/linux/arch-linux/#i3-gaps", 
-            "text": "Source:  https://i3wm.org/   Installation", 
+            "text": "Source:  https://i3wm.org/   Installation   Start xorg startx", 
             "title": "i3-gaps"
         }, 
         {
