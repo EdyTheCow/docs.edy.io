@@ -58,9 +58,9 @@ swapon /dev/[DISK]2
 
 ## Installation
 
-### Mount the drive
+### Mount the disk
 ```
-mount /dev/[DISK] /mnt
+mount /dev/[DISK]1 /mnt
 ```
 
 ### Install base system
@@ -148,9 +148,34 @@ grub-mkconfig -o /boot/grub/grub.cfg
 passwd
 ```
 
-Reboot the system
+### Safely exit chroot
+
+```
+exit
+```
+```
+umount /mnt
+```
+
+<b>Reboot the system</b>
 
 ## Post-Installation
+
+### Internet connection
+Often times there's no internet connection after installation. For a temporarily fix re-enable network interface.
+
+!!! note
+    Normally default interface is called eth0, but with smart naming enabled (default). It will be called eno1.
+
+List current interfaces
+```
+ip link
+```
+
+Enable interface
+```
+dhcpcd eno1
+```
 
 ### Update the system
 ```
@@ -165,11 +190,6 @@ useradd --create-home edy
 Set password
 ```
 passwd edy
-```
-
-Add user to sudo
-```
-usermod -aG sudo edy
 ```
 
 Edit sudoers file

@@ -420,8 +420,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mount-the-drive" title="Mount the drive" class="md-nav__link">
-    Mount the drive
+  <a href="#mount-the-disk" title="Mount the disk" class="md-nav__link">
+    Mount the disk
   </a>
   
 </li>
@@ -508,6 +508,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#safely-exit-chroot" title="Safely exit chroot" class="md-nav__link">
+    Safely exit chroot
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -520,6 +527,13 @@
   
     <nav class="md-nav">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internet-connection" title="Internet connection" class="md-nav__link">
+    Internet connection
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#update-the-system" title="Update the system" class="md-nav__link">
@@ -681,8 +695,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mount-the-drive" title="Mount the drive" class="md-nav__link">
-    Mount the drive
+  <a href="#mount-the-disk" title="Mount the disk" class="md-nav__link">
+    Mount the disk
   </a>
   
 </li>
@@ -769,6 +783,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#safely-exit-chroot" title="Safely exit chroot" class="md-nav__link">
+    Safely exit chroot
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -781,6 +802,13 @@
   
     <nav class="md-nav">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internet-connection" title="Internet connection" class="md-nav__link">
+    Internet connection
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#update-the-system" title="Update the system" class="md-nav__link">
@@ -928,8 +956,8 @@
 </pre></div>
 
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<h3 id="mount-the-drive">Mount the drive<a class="headerlink" href="#mount-the-drive" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span>mount /dev/[DISK] /mnt
+<h3 id="mount-the-disk">Mount the disk<a class="headerlink" href="#mount-the-disk" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span>mount /dev/[DISK]1 /mnt
 </pre></div>
 
 <h3 id="install-base-system">Install base system<a class="headerlink" href="#install-base-system" title="Permanent link">&para;</a></h3>
@@ -996,8 +1024,25 @@
 <div class="highlight"><pre><span></span>passwd
 </pre></div>
 
-<p>Reboot the system</p>
+<h3 id="safely-exit-chroot">Safely exit chroot<a class="headerlink" href="#safely-exit-chroot" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span>exit
+</pre></div>
+<div class="highlight"><pre><span></span>umount /mnt
+</pre></div></p>
+<p><b>Reboot the system</b></p>
 <h2 id="post-installation">Post-Installation<a class="headerlink" href="#post-installation" title="Permanent link">&para;</a></h2>
+<h3 id="internet-connection">Internet connection<a class="headerlink" href="#internet-connection" title="Permanent link">&para;</a></h3>
+<p>Often times there's no internet connection after installation. For a temporarily fix re-enable network interface.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Normally default interface is called eth0, but with smart naming enabled (default). It will be called eno1.</p>
+</div>
+<p>List current interfaces
+<div class="highlight"><pre><span></span>ip link
+</pre></div></p>
+<p>Enable interface
+<div class="highlight"><pre><span></span>dhcpcd eno1
+</pre></div></p>
 <h3 id="update-the-system">Update the system<a class="headerlink" href="#update-the-system" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span>pacman -Sy
 </pre></div>
@@ -1008,9 +1053,6 @@
 
 <p>Set password
 <div class="highlight"><pre><span></span>passwd edy
-</pre></div></p>
-<p>Add user to sudo
-<div class="highlight"><pre><span></span>usermod -aG sudo edy
 </pre></div></p>
 <p>Edit sudoers file
 <div class="highlight"><pre><span></span>EDITOR=vim visudo
