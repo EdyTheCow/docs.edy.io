@@ -14,7 +14,9 @@ pages:
   - About: about.md
   - Linux:
     - Linux Basics: linux/linux-basics.md
-    - Arch Linux: linux/arch-linux.md
+    - Arch Linux Installation: linux/arch-linux-installation.md
+    - Arch Linux Config: linux/arch-linux-config.md
+
 
 theme:
   name: 'material'

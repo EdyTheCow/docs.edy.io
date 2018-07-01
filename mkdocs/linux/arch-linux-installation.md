@@ -1,11 +1,11 @@
-# Arch Linux
+# Arch Linux Installation
 
 ## Pre-Installation
 
 !!! note ""
     Source: https://wiki.archlinux.org/index.php/Installation_guide
 
-### Set keyboard to norwegian
+### Set keyboard layout to norwegian
 ```
 loadkeys no-latin1
 ```
@@ -276,12 +276,19 @@ nvidia-xconfig
 
 Installation
 ```
+
+```
+
+Create .xinitrc file
+```
+echo exec i3 > ~/.xinitrc
 ```
 
 Start xorg
 ```
 startx
 ```
+
 
 ## Other resources
 - https://wiki.archlinux.org/index.php/Network_configuration

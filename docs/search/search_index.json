@@ -76,159 +76,214 @@
             "title": "Linux Basics"
         }, 
         {
-            "location": "/linux/arch-linux/", 
-            "text": "Arch Linux\n\n\nPre-Installation\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/Installation_guide\n\n\n\n\nSet keyboard to norwegian\n\n\nloadkeys no-latin1\n\n\n\n\nUpdate the system clock\n\n\ntimedatectl set-ntp true\n\n\n\n\nPartition the disks\n\n\nList all current partitions\n\nfdisk -l\n\n\n\nSet partitions and swap\n\n\n\n\nNote\n\n\nReplace [DISK] with one of disks listed in \nfdisk -l\n Example: sda\n\n\n\n\ncfdisk /dev/[DISK]\n\n\n\n\nOnce disk is selected, create two partitions\n\n\n\n\n\n\n\n\nSize\n\n\nType\n\n\nBootable\n\n\n\n\n\n\n\n\n\n\nAll but 8GB\n\n\nDefault\n\n\nYes\n\n\n\n\n\n\n8GB\n\n\nSwap\n\n\nNo\n\n\n\n\n\n\n\n\nFormat partitions\n\n\n\n\nWarning\n\n\nMake sure to put \n1\n after the [DISK]. We're formatting a partition. Not the whole disk. (Same with swap)\n\n\n\n\nmkfs.ext4 dev/[DISK]1\n\n\n\n\nSetup swap\n\nmkswap /dev/[DISK]2\n\n\n\nswapon /dev/[DISK]2\n\n\n\n\nInstallation\n\n\nMount the disk\n\n\nmount /dev/[DISK]1 /mnt\n\n\n\n\nInstall base system\n\n\npacstrap -i /mnt base base-devel\n\n\n\n\nConfiguration\n\n\nGenerate fstab file\n\n\ngenfstab -U -p /mnt \n /mnt/etc/fstab\n\n\n\n\nChroot\n\n\narch-chroot /mnt\n\n\n\n\nSet the clock\n\n\nln -sf /usr/share/zoneoinfo/Europe/Oslo /etc/localtime\n\n\n\nhwclock --systohc\n\n\n\nSet locale\n\n\necho en_US.UTF-8 UTF-8 \n /etc/locale.gen\n\n\n\n\nlocale-gen\n\n\n\n\necho LANG=en_US.UTF-8 \n /etc/locale.conf\n\n\n\n\necho KEYMAP=no-latin1 \n /etc/vconsole.conf\n\n\n\n\nNetwork configuration\n\n\necho moorch \n /etc/hostname\n\n\n\n\necho \n127.0.0.1   localhost\n::1       localhost\n127.0.1.1     moorch.localdomain moorch\n \n /etc/hosts\n\n\n\n\nGrub\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/GRUB\n\n\n\n\nInstall grub\n\n\npacman -S grub\n\n\n\n\ngrub-install --target=i386-pc /dev/[DISK]\n\n\n\n\ngrub-mkconfig -o /boot/grub/grub.cfg\n\n\n\n\nMicrocode\n\npacman -S intel-ucode \n\n\n\ngrub-mkconfig -o /boot/grub/grub.cfg\n\n\n\n\nSet the root password\n\n\npasswd\n\n\n\n\nSafely exit chroot\n\n\nexit\n\n\n\numount /mnt\n\n\n\nReboot the system\n\n\nPost-Installation\n\n\nInternet connection\n\n\nOften times there's no internet connection after installation. For a temporarily fix re-enable network interface.\n\n\n\n\nNote\n\n\nNormally default interface is called eth0, but with smart naming enabled (default). It will be called eno1.\n\n\n\n\nList current interfaces\n\nip link\n\n\n\nEnable interface\n\ndhcpcd eno1\n\n\n\nUpdate the system\n\n\npacman -Sy\n\n\n\n\nAdd new user\n\n\nuseradd --create-home edy\n\n\n\n\nSet password\n\npasswd edy\n\n\n\nEdit sudoers file\n\nEDITOR=vim visudo\n\n\n\nAdd user under privileges section\n\nedy ALL=(ALL) ALL\n\n\n\nSwitch to newly created user\n\n\nNetwork Manager\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/NetworkManager\n\n\n\n\nInstalling the package\n\nsudo pacman -S networkmanager\n\n\n\nStart the service\n\nsudo systemctl start NetworkManager.service\n\n\n\nEnable to start it on boot\n\nsudo systemctl enable NetworkManager.service\n\n\n\nAura package manager\n\n\n\n\nSource: \nhttps://aur.archlinux.org/packages/aura-bin/\n\n\n\n\nTODO:\n\n\n\n\nThis needs to be cloned and then manually installed\n\n\nAlias auro with pacman so you can do -S for official and -A for AUR \n\n\nGist for more info\n\n\n\n\nXorg\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/Xorg\n\n\n\n\nInstallation\n\nsudo pacman -S xorg-server xorg-apps\n\n\n\nNvidia drivers\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/NVIDIA\n\n\n\n\nInstallation\n\nsudo pacman -S nvidia\n\n\n\n32-bit application support drivers\n\nsudo pacman -S lib32-nvidia-utils lib32-nvidia-390xx-utils\n\n\n\nReboot required\n\n\nConfigure xorg\n\nnvidia-xconfig\n\n\n\ni3-gaps\n\n\n\n\nSource: \nhttps://i3wm.org/\n\n\n\n\nInstallation\n\n\n\n\n\nStart xorg\n\nstartx\n\n\n\nOther resources\n\n\n\n\nhttps://wiki.archlinux.org/index.php/Network_configuration", 
-            "title": "Arch Linux"
+            "location": "/linux/arch-linux-installation/", 
+            "text": "Arch Linux Installation\n\n\nPre-Installation\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/Installation_guide\n\n\n\n\nSet keyboard layout to norwegian\n\n\nloadkeys no-latin1\n\n\n\n\nUpdate the system clock\n\n\ntimedatectl set-ntp true\n\n\n\n\nPartition the disks\n\n\nList all current partitions\n\nfdisk -l\n\n\n\nSet partitions and swap\n\n\n\n\nNote\n\n\nReplace [DISK] with one of disks listed in \nfdisk -l\n Example: sda\n\n\n\n\ncfdisk /dev/[DISK]\n\n\n\n\nOnce disk is selected, create two partitions\n\n\n\n\n\n\n\n\nSize\n\n\nType\n\n\nBootable\n\n\n\n\n\n\n\n\n\n\nAll but 8GB\n\n\nDefault\n\n\nYes\n\n\n\n\n\n\n8GB\n\n\nSwap\n\n\nNo\n\n\n\n\n\n\n\n\nFormat partitions\n\n\n\n\nWarning\n\n\nMake sure to put \n1\n after the [DISK]. We're formatting a partition. Not the whole disk. (Same with swap)\n\n\n\n\nmkfs.ext4 dev/[DISK]1\n\n\n\n\nSetup swap\n\nmkswap /dev/[DISK]2\n\n\n\nswapon /dev/[DISK]2\n\n\n\n\nInstallation\n\n\nMount the disk\n\n\nmount /dev/[DISK]1 /mnt\n\n\n\n\nInstall base system\n\n\npacstrap -i /mnt base base-devel\n\n\n\n\nConfiguration\n\n\nGenerate fstab file\n\n\ngenfstab -U -p /mnt \n /mnt/etc/fstab\n\n\n\n\nChroot\n\n\narch-chroot /mnt\n\n\n\n\nSet the clock\n\n\nln -sf /usr/share/zoneoinfo/Europe/Oslo /etc/localtime\n\n\n\nhwclock --systohc\n\n\n\nSet locale\n\n\necho en_US.UTF-8 UTF-8 \n /etc/locale.gen\n\n\n\n\nlocale-gen\n\n\n\n\necho LANG=en_US.UTF-8 \n /etc/locale.conf\n\n\n\n\necho KEYMAP=no-latin1 \n /etc/vconsole.conf\n\n\n\n\nNetwork configuration\n\n\necho moorch \n /etc/hostname\n\n\n\n\necho \n127.0.0.1   localhost\n::1       localhost\n127.0.1.1     moorch.localdomain moorch\n \n /etc/hosts\n\n\n\n\nGrub\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/GRUB\n\n\n\n\nInstall grub\n\n\npacman -S grub\n\n\n\n\ngrub-install --target=i386-pc /dev/[DISK]\n\n\n\n\ngrub-mkconfig -o /boot/grub/grub.cfg\n\n\n\n\nMicrocode\n\npacman -S intel-ucode \n\n\n\ngrub-mkconfig -o /boot/grub/grub.cfg\n\n\n\n\nSet the root password\n\n\npasswd\n\n\n\n\nSafely exit chroot\n\n\nexit\n\n\n\numount /mnt\n\n\n\nReboot the system\n\n\nPost-Installation\n\n\nInternet connection\n\n\nOften times there's no internet connection after installation. For a temporarily fix re-enable network interface.\n\n\n\n\nNote\n\n\nNormally default interface is called eth0, but with smart naming enabled (default). It will be called eno1.\n\n\n\n\nList current interfaces\n\nip link\n\n\n\nEnable interface\n\ndhcpcd eno1\n\n\n\nUpdate the system\n\n\npacman -Sy\n\n\n\n\nAdd new user\n\n\nuseradd --create-home edy\n\n\n\n\nSet password\n\npasswd edy\n\n\n\nEdit sudoers file\n\nEDITOR=vim visudo\n\n\n\nAdd user under privileges section\n\nedy ALL=(ALL) ALL\n\n\n\nSwitch to newly created user\n\n\nNetwork Manager\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/NetworkManager\n\n\n\n\nInstalling the package\n\nsudo pacman -S networkmanager\n\n\n\nStart the service\n\nsudo systemctl start NetworkManager.service\n\n\n\nEnable to start it on boot\n\nsudo systemctl enable NetworkManager.service\n\n\n\nAura package manager\n\n\n\n\nSource: \nhttps://aur.archlinux.org/packages/aura-bin/\n\n\n\n\nTODO:\n\n\n\n\nThis needs to be cloned and then manually installed\n\n\nAlias auro with pacman so you can do -S for official and -A for AUR \n\n\nGist for more info\n\n\n\n\nXorg\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/Xorg\n\n\n\n\nInstallation\n\nsudo pacman -S xorg-server xorg-apps\n\n\n\nNvidia drivers\n\n\n\n\nSource: \nhttps://wiki.archlinux.org/index.php/NVIDIA\n\n\n\n\nInstallation\n\nsudo pacman -S nvidia\n\n\n\n32-bit application support drivers\n\nsudo pacman -S lib32-nvidia-utils lib32-nvidia-390xx-utils\n\n\n\nReboot required\n\n\nConfigure xorg\n\nnvidia-xconfig\n\n\n\ni3-gaps\n\n\n\n\nSource: \nhttps://i3wm.org/\n\n\n\n\nInstallation\n\n\n\n\n\nCreate .xinitrc file\n\necho exec i3 \n ~/.xinitrc\n\n\n\nStart xorg\n\nstartx\n\n\n\nOther resources\n\n\n\n\nhttps://wiki.archlinux.org/index.php/Network_configuration", 
+            "title": "Arch Linux Installation"
         }, 
         {
-            "location": "/linux/arch-linux/#arch-linux", 
+            "location": "/linux/arch-linux-installation/#arch-linux-installation", 
             "text": "", 
-            "title": "Arch Linux"
+            "title": "Arch Linux Installation"
         }, 
         {
-            "location": "/linux/arch-linux/#pre-installation", 
+            "location": "/linux/arch-linux-installation/#pre-installation", 
             "text": "Source:  https://wiki.archlinux.org/index.php/Installation_guide", 
             "title": "Pre-Installation"
         }, 
         {
-            "location": "/linux/arch-linux/#set-keyboard-to-norwegian", 
+            "location": "/linux/arch-linux-installation/#set-keyboard-layout-to-norwegian", 
             "text": "loadkeys no-latin1", 
-            "title": "Set keyboard to norwegian"
+            "title": "Set keyboard layout to norwegian"
         }, 
         {
-            "location": "/linux/arch-linux/#update-the-system-clock", 
+            "location": "/linux/arch-linux-installation/#update-the-system-clock", 
             "text": "timedatectl set-ntp true", 
             "title": "Update the system clock"
         }, 
         {
-            "location": "/linux/arch-linux/#partition-the-disks", 
+            "location": "/linux/arch-linux-installation/#partition-the-disks", 
             "text": "List all current partitions fdisk -l", 
             "title": "Partition the disks"
         }, 
         {
-            "location": "/linux/arch-linux/#set-partitions-and-swap", 
+            "location": "/linux/arch-linux-installation/#set-partitions-and-swap", 
             "text": "Note  Replace [DISK] with one of disks listed in  fdisk -l  Example: sda   cfdisk /dev/[DISK]  Once disk is selected, create two partitions     Size  Type  Bootable      All but 8GB  Default  Yes    8GB  Swap  No", 
             "title": "Set partitions and swap"
         }, 
         {
-            "location": "/linux/arch-linux/#format-partitions", 
+            "location": "/linux/arch-linux-installation/#format-partitions", 
             "text": "Warning  Make sure to put  1  after the [DISK]. We're formatting a partition. Not the whole disk. (Same with swap)   mkfs.ext4 dev/[DISK]1  Setup swap mkswap /dev/[DISK]2  swapon /dev/[DISK]2", 
             "title": "Format partitions"
         }, 
         {
-            "location": "/linux/arch-linux/#installation", 
+            "location": "/linux/arch-linux-installation/#installation", 
             "text": "", 
             "title": "Installation"
         }, 
         {
-            "location": "/linux/arch-linux/#mount-the-disk", 
+            "location": "/linux/arch-linux-installation/#mount-the-disk", 
             "text": "mount /dev/[DISK]1 /mnt", 
             "title": "Mount the disk"
         }, 
         {
-            "location": "/linux/arch-linux/#install-base-system", 
+            "location": "/linux/arch-linux-installation/#install-base-system", 
             "text": "pacstrap -i /mnt base base-devel", 
             "title": "Install base system"
         }, 
         {
-            "location": "/linux/arch-linux/#configuration", 
+            "location": "/linux/arch-linux-installation/#configuration", 
             "text": "", 
             "title": "Configuration"
         }, 
         {
-            "location": "/linux/arch-linux/#generate-fstab-file", 
+            "location": "/linux/arch-linux-installation/#generate-fstab-file", 
             "text": "genfstab -U -p /mnt   /mnt/etc/fstab", 
             "title": "Generate fstab file"
         }, 
         {
-            "location": "/linux/arch-linux/#chroot", 
+            "location": "/linux/arch-linux-installation/#chroot", 
             "text": "arch-chroot /mnt", 
             "title": "Chroot"
         }, 
         {
-            "location": "/linux/arch-linux/#set-the-clock", 
+            "location": "/linux/arch-linux-installation/#set-the-clock", 
             "text": "ln -sf /usr/share/zoneoinfo/Europe/Oslo /etc/localtime  hwclock --systohc", 
             "title": "Set the clock"
         }, 
         {
-            "location": "/linux/arch-linux/#set-locale", 
+            "location": "/linux/arch-linux-installation/#set-locale", 
             "text": "echo en_US.UTF-8 UTF-8   /etc/locale.gen  locale-gen  echo LANG=en_US.UTF-8   /etc/locale.conf  echo KEYMAP=no-latin1   /etc/vconsole.conf", 
             "title": "Set locale"
         }, 
         {
-            "location": "/linux/arch-linux/#network-configuration", 
+            "location": "/linux/arch-linux-installation/#network-configuration", 
             "text": "echo moorch   /etc/hostname  echo  127.0.0.1   localhost\n::1       localhost\n127.0.1.1     moorch.localdomain moorch    /etc/hosts", 
             "title": "Network configuration"
         }, 
         {
-            "location": "/linux/arch-linux/#grub", 
+            "location": "/linux/arch-linux-installation/#grub", 
             "text": "Source:  https://wiki.archlinux.org/index.php/GRUB", 
             "title": "Grub"
         }, 
         {
-            "location": "/linux/arch-linux/#install-grub", 
+            "location": "/linux/arch-linux-installation/#install-grub", 
             "text": "pacman -S grub  grub-install --target=i386-pc /dev/[DISK]  grub-mkconfig -o /boot/grub/grub.cfg  Microcode pacman -S intel-ucode   grub-mkconfig -o /boot/grub/grub.cfg", 
             "title": "Install grub"
         }, 
         {
-            "location": "/linux/arch-linux/#set-the-root-password", 
+            "location": "/linux/arch-linux-installation/#set-the-root-password", 
             "text": "passwd", 
             "title": "Set the root password"
         }, 
         {
-            "location": "/linux/arch-linux/#safely-exit-chroot", 
+            "location": "/linux/arch-linux-installation/#safely-exit-chroot", 
             "text": "exit  umount /mnt  Reboot the system", 
             "title": "Safely exit chroot"
         }, 
         {
-            "location": "/linux/arch-linux/#post-installation", 
+            "location": "/linux/arch-linux-installation/#post-installation", 
             "text": "", 
             "title": "Post-Installation"
         }, 
         {
-            "location": "/linux/arch-linux/#internet-connection", 
+            "location": "/linux/arch-linux-installation/#internet-connection", 
             "text": "Often times there's no internet connection after installation. For a temporarily fix re-enable network interface.   Note  Normally default interface is called eth0, but with smart naming enabled (default). It will be called eno1.   List current interfaces ip link  Enable interface dhcpcd eno1", 
             "title": "Internet connection"
         }, 
         {
-            "location": "/linux/arch-linux/#update-the-system", 
+            "location": "/linux/arch-linux-installation/#update-the-system", 
             "text": "pacman -Sy", 
             "title": "Update the system"
         }, 
         {
-            "location": "/linux/arch-linux/#add-new-user", 
+            "location": "/linux/arch-linux-installation/#add-new-user", 
             "text": "useradd --create-home edy  Set password passwd edy  Edit sudoers file EDITOR=vim visudo  Add user under privileges section edy ALL=(ALL) ALL  Switch to newly created user", 
             "title": "Add new user"
         }, 
         {
-            "location": "/linux/arch-linux/#network-manager", 
+            "location": "/linux/arch-linux-installation/#network-manager", 
             "text": "Source:  https://wiki.archlinux.org/index.php/NetworkManager   Installing the package sudo pacman -S networkmanager  Start the service sudo systemctl start NetworkManager.service  Enable to start it on boot sudo systemctl enable NetworkManager.service", 
             "title": "Network Manager"
         }, 
         {
-            "location": "/linux/arch-linux/#aura-package-manager", 
+            "location": "/linux/arch-linux-installation/#aura-package-manager", 
             "text": "Source:  https://aur.archlinux.org/packages/aura-bin/   TODO:   This needs to be cloned and then manually installed  Alias auro with pacman so you can do -S for official and -A for AUR   Gist for more info", 
             "title": "Aura package manager"
         }, 
         {
-            "location": "/linux/arch-linux/#xorg", 
+            "location": "/linux/arch-linux-installation/#xorg", 
             "text": "Source:  https://wiki.archlinux.org/index.php/Xorg   Installation sudo pacman -S xorg-server xorg-apps", 
             "title": "Xorg"
         }, 
         {
-            "location": "/linux/arch-linux/#nvidia-drivers", 
+            "location": "/linux/arch-linux-installation/#nvidia-drivers", 
             "text": "Source:  https://wiki.archlinux.org/index.php/NVIDIA   Installation sudo pacman -S nvidia  32-bit application support drivers sudo pacman -S lib32-nvidia-utils lib32-nvidia-390xx-utils  Reboot required  Configure xorg nvidia-xconfig", 
             "title": "Nvidia drivers"
         }, 
         {
-            "location": "/linux/arch-linux/#i3-gaps", 
-            "text": "Source:  https://i3wm.org/   Installation   Start xorg startx", 
+            "location": "/linux/arch-linux-installation/#i3-gaps", 
+            "text": "Source:  https://i3wm.org/   Installation   Create .xinitrc file echo exec i3   ~/.xinitrc  Start xorg startx", 
             "title": "i3-gaps"
         }, 
         {
-            "location": "/linux/arch-linux/#other-resources", 
+            "location": "/linux/arch-linux-installation/#other-resources", 
             "text": "https://wiki.archlinux.org/index.php/Network_configuration", 
             "title": "Other resources"
+        }, 
+        {
+            "location": "/linux/arch-linux-config/", 
+            "text": "Arch Linux Config\n\n\nOS and programs configuration after arch linux installation\n\n\nAudio\n\n\nPulseAudio\n\n\nProgram which controls audio (might use only amixer in future)\n\n\nInstallation\n\n\nsudo pacman -S pulseaudio\n\n\n\n\nSetting keybinds\n\n\nList audio outputs\n\npactl list sinks short\n\n\n\nSource: \nhttps://faq.i3wm.org/question/3747/enabling-multimedia-keys.1.html\n\nMight be changed soon to amixer since pactl has no max volume limit\n\n# Pulse Audio controls\nbindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume\nbindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume\nbindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound\n\n# Media player controls\nbindsym XF86AudioPlay exec playerctl play\nbindsym XF86AudioPause exec playerctl pause\nbindsym XF86AudioNext exec playerctl next\nbindsym XF86AudioPrev exec playerctl previous\n\n\n\nFirefox\n\n\nTODO: add firefox extensions and more info about config\n\n\nInstallation\n\n\nsudo pacman -S firefox\n\n\n\n\nFirefox font rendering fix\n\n\nFix for a really annoying font rendering issue when using specific fonts such as Hack\nSource: \nhttps://bbs.archlinux.org/viewtopic.php?id=233984\n\n\nSimply install package ttf-croscore\n\nsudo pacman -S ttf-croscore\n\n\n\nvim\n\n\nvim pasting\n\n\nTODO: setup and configs", 
+            "title": "Arch Linux Config"
+        }, 
+        {
+            "location": "/linux/arch-linux-config/#arch-linux-config", 
+            "text": "OS and programs configuration after arch linux installation", 
+            "title": "Arch Linux Config"
+        }, 
+        {
+            "location": "/linux/arch-linux-config/#audio", 
+            "text": "", 
+            "title": "Audio"
+        }, 
+        {
+            "location": "/linux/arch-linux-config/#pulseaudio", 
+            "text": "Program which controls audio (might use only amixer in future)", 
+            "title": "PulseAudio"
+        }, 
+        {
+            "location": "/linux/arch-linux-config/#installation", 
+            "text": "sudo pacman -S pulseaudio", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/linux/arch-linux-config/#setting-keybinds", 
+            "text": "List audio outputs pactl list sinks short  Source:  https://faq.i3wm.org/question/3747/enabling-multimedia-keys.1.html \nMight be changed soon to amixer since pactl has no max volume limit # Pulse Audio controls\nbindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume\nbindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume\nbindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound\n\n# Media player controls\nbindsym XF86AudioPlay exec playerctl play\nbindsym XF86AudioPause exec playerctl pause\nbindsym XF86AudioNext exec playerctl next\nbindsym XF86AudioPrev exec playerctl previous", 
+            "title": "Setting keybinds"
+        }, 
+        {
+            "location": "/linux/arch-linux-config/#firefox", 
+            "text": "TODO: add firefox extensions and more info about config", 
+            "title": "Firefox"
+        }, 
+        {
+            "location": "/linux/arch-linux-config/#installation_1", 
+            "text": "sudo pacman -S firefox", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/linux/arch-linux-config/#firefox-font-rendering-fix", 
+            "text": "Fix for a really annoying font rendering issue when using specific fonts such as Hack\nSource:  https://bbs.archlinux.org/viewtopic.php?id=233984  Simply install package ttf-croscore sudo pacman -S ttf-croscore", 
+            "title": "Firefox font rendering fix"
+        }, 
+        {
+            "location": "/linux/arch-linux-config/#vim", 
+            "text": "", 
+            "title": "vim"
+        }, 
+        {
+            "location": "/linux/arch-linux-config/#vim-pasting", 
+            "text": "TODO: setup and configs", 
+            "title": "vim pasting"
         }
     ]
 }

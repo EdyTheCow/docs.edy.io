@@ -13,7 +13,7 @@
         <meta name="description" content="Personal wiki for random stuff">
       
       
-        <link rel="canonical" href="https://docs.edy.io/linux/arch-linux/">
+        <link rel="canonical" href="https://docs.edy.io/linux/arch-linux-installation/">
       
       
         <meta name="author" content="Edy">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Arch Linux - Moo Docs</title>
+        <title>Arch Linux Installation - Moo Docs</title>
       
     
     
@@ -85,7 +85,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#arch-linux" tabindex="1" class="md-skip">
+      <a href="#arch-linux-installation" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -111,7 +111,7 @@
                 Moo Docs
               </span>
               <span class="md-header-nav__topic">
-                Arch Linux
+                Arch Linux Installation
               </span>
             
           
@@ -346,11 +346,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Arch Linux
+        Arch Linux Installation
       </label>
     
-    <a href="./" title="Arch Linux" class="md-nav__link md-nav__link--active">
-      Arch Linux
+    <a href="./" title="Arch Linux Installation" class="md-nav__link md-nav__link--active">
+      Arch Linux Installation
     </a>
     
       
@@ -372,8 +372,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#set-keyboard-to-norwegian" title="Set keyboard to norwegian" class="md-nav__link">
-    Set keyboard to norwegian
+  <a href="#set-keyboard-layout-to-norwegian" title="Set keyboard layout to norwegian" class="md-nav__link">
+    Set keyboard layout to norwegian
   </a>
   
 </li>
@@ -613,6 +613,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../arch-linux-config/" title="Arch Linux Config" class="md-nav__link">
+      Arch Linux Config
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -647,8 +659,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#set-keyboard-to-norwegian" title="Set keyboard to norwegian" class="md-nav__link">
-    Set keyboard to norwegian
+  <a href="#set-keyboard-layout-to-norwegian" title="Set keyboard layout to norwegian" class="md-nav__link">
+    Set keyboard layout to norwegian
   </a>
   
 </li>
@@ -894,12 +906,12 @@
               
                 
                 
-                <h1 id="arch-linux">Arch Linux<a class="headerlink" href="#arch-linux" title="Permanent link">&para;</a></h1>
+                <h1 id="arch-linux-installation">Arch Linux Installation<a class="headerlink" href="#arch-linux-installation" title="Permanent link">&para;</a></h1>
 <h2 id="pre-installation">Pre-Installation<a class="headerlink" href="#pre-installation" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p>Source: <a href="https://wiki.archlinux.org/index.php/Installation_guide">https://wiki.archlinux.org/index.php/Installation_guide</a></p>
 </div>
-<h3 id="set-keyboard-to-norwegian">Set keyboard to norwegian<a class="headerlink" href="#set-keyboard-to-norwegian" title="Permanent link">&para;</a></h3>
+<h3 id="set-keyboard-layout-to-norwegian">Set keyboard layout to norwegian<a class="headerlink" href="#set-keyboard-layout-to-norwegian" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span>loadkeys no-latin1
 </pre></div>
 
@@ -1112,6 +1124,9 @@
 <p>Installation
 <div class="highlight"><pre><span></span>
 </pre></div></p>
+<p>Create .xinitrc file
+<div class="highlight"><pre><span></span>echo exec i3 &gt; ~/.xinitrc
+</pre></div></p>
 <p>Start xorg
 <div class="highlight"><pre><span></span>startx
 </pre></div></p>
@@ -1153,6 +1168,20 @@
             </div>
           </a>
         
+        
+          <a href="../arch-linux-config/" title="Arch Linux Config" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Arch Linux Config
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>
