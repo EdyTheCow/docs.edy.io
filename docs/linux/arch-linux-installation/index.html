@@ -557,9 +557,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aura-package-manager" title="Aura package manager" class="md-nav__link">
-    Aura package manager
+  <a href="#yay-package-manager" title="yay package manager" class="md-nav__link">
+    yay package manager
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yay-installation" title="yay installation" class="md-nav__link">
+    yay installation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -844,9 +857,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aura-package-manager" title="Aura package manager" class="md-nav__link">
-    Aura package manager
+  <a href="#yay-package-manager" title="yay package manager" class="md-nav__link">
+    yay package manager
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yay-installation" title="yay installation" class="md-nav__link">
+    yay installation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1086,22 +1112,23 @@
 <p>Enable to start it on boot
 <div class="highlight"><pre><span></span>sudo systemctl enable NetworkManager.service
 </pre></div></p>
-<h3 id="aura-package-manager">Aura package manager<a class="headerlink" href="#aura-package-manager" title="Permanent link">&para;</a></h3>
+<h3 id="yay-package-manager">yay package manager<a class="headerlink" href="#yay-package-manager" title="Permanent link">&para;</a></h3>
+<p>Adds support for AUR and replaces pacman</p>
 <div class="admonition note">
-<p>Source: <a href="https://aur.archlinux.org/packages/aura-bin/">https://aur.archlinux.org/packages/aura-bin/</a></p>
+<p>Source: <a href="https://github.com/Jguer/yay">https://github.com/Jguer/yay</a></p>
 </div>
-<p>TODO:</p>
-<ul>
-<li>This needs to be cloned and then manually installed</li>
-<li>Alias auro with pacman so you can do -S for official and -A for AUR </li>
-<li>Gist for more info</li>
-</ul>
+<h4 id="yay-installation">yay installation<a class="headerlink" href="#yay-installation" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span>git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+</pre></div>
+
 <h3 id="xorg">Xorg<a class="headerlink" href="#xorg" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p>Source: <a href="https://wiki.archlinux.org/index.php/Xorg">https://wiki.archlinux.org/index.php/Xorg</a></p>
 </div>
 <p>Installation
-<div class="highlight"><pre><span></span>sudo pacman -S xorg-server xorg-apps
+<div class="highlight"><pre><span></span>sudo pacman -S xorg-server xorg-server-utils xorg-init
 </pre></div></p>
 <h4 id="nvidia-drivers">Nvidia drivers<a class="headerlink" href="#nvidia-drivers" title="Permanent link">&para;</a></h4>
 <div class="admonition note">

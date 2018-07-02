@@ -2,57 +2,80 @@
 
 OS and programs configuration after arch linux installation
 
-# Audio
+## Software installation and configuration
 
-## PulseAudio
-Program which controls audio (might use only amixer in future)
 
-### Installation
+### PulseAudio
+PulseAudio handles media controls while amixer handles volume
+
+#### PulseAudio installation
 ```
 sudo pacman -S pulseaudio
 ```
 
-### Setting keybinds
+#### Setting keybinds
 
 List audio outputs
 ```
 pactl list sinks short
 ```
 
-Source: https://faq.i3wm.org/question/3747/enabling-multimedia-keys.1.html
-Might be changed soon to amixer since pactl has no max volume limit
+#### i3 config
+
+!!! note ""
+    Source: https://faq.i3wm.org/question/3747/enabling-multimedia-keys.1.html
+
 ```
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
+# Amixer volume controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2%+ unmute #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2%- unmute #decrease sound volume
+
+# Pulse Audio media player controls
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
- 
-# Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 ```
 
-# Firefox
-TODO: add firefox extensions and more info about config
+### Firefox
 
-## Installation
+#### Firefox installation
 ```
 sudo pacman -S firefox
 ```
 
-## Firefox font rendering fix
+#### Extensions and config
+
+
+### KeepassXC
+KeepassXC is a KeepassX fork which adds additional features such as yubico key support
+
+!!! note ""
+    Source: https://keepassxc.org/
+
+#### KeepassXC installation
+```
+sudo pacman -S keepassxc
+```
+
+## Configuration
+
+### vim
+
+#### vim pasting
+TODO: setup and configs
+
+
+## Troubleshooting
+
+### Firefox font rendering issues
 Fix for a really annoying font rendering issue when using specific fonts such as Hack
-Source: https://bbs.archlinux.org/viewtopic.php?id=233984
+
+!!! note ""
+    Source: https://bbs.archlinux.org/viewtopic.php?id=233984
 
 Simply install package ttf-croscore
 ```
 sudo pacman -S ttf-croscore
 ```
-
-# vim
-
-## vim pasting
-TODO: setup and configs
-

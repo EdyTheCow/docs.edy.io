@@ -225,16 +225,18 @@ Enable to start it on boot
 sudo systemctl enable NetworkManager.service
 ```
 
-### Aura package manager
+### yay package manager
+Adds support for AUR and replaces pacman
 
 !!! note ""
-    Source: https://aur.archlinux.org/packages/aura-bin/
+    Source: https://github.com/Jguer/yay
 
-TODO:
-
-- This needs to be cloned and then manually installed
-- Alias auro with pacman so you can do -S for official and -A for AUR 
-- Gist for more info
+#### yay installation
+```
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
 
 ### Xorg
 
@@ -243,7 +245,7 @@ TODO:
 
 Installation
 ```
-sudo pacman -S xorg-server xorg-apps
+sudo pacman -S xorg-server xorg-server-utils xorg-init
 ```
 
 
