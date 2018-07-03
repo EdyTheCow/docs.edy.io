@@ -616,6 +616,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#i3-gaps-configuration" title="i3-gaps configuration" class="md-nav__link">
+    i3-gaps configuration
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -949,6 +956,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#i3-gaps-configuration" title="i3-gaps configuration" class="md-nav__link">
+    i3-gaps configuration
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1173,10 +1187,10 @@
 <div class="highlight"><pre><span></span>sudo systemctl enable NetworkManager.service
 </pre></div></p>
 <h3 id="yay-package-manager">yay package manager<a class="headerlink" href="#yay-package-manager" title="Permanent link">&para;</a></h3>
-<p>Adds support for AUR and replaces pacman</p>
 <div class="admonition note">
 <p>Source: <a href="https://github.com/Jguer/yay">https://github.com/Jguer/yay</a></p>
 </div>
+<p>Adds support for AUR and replaces pacman functions</p>
 <h4 id="yay-installation">yay installation<a class="headerlink" href="#yay-installation" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span>git clone https://aur.archlinux.org/yay.git
 cd yay
@@ -1209,14 +1223,31 @@ makepkg -si
 <p>Source: <a href="https://i3wm.org/">https://i3wm.org/</a></p>
 </div>
 <h3 id="i3-gaps-installation">i3-gaps installation<a class="headerlink" href="#i3-gaps-installation" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span>yay i3-gaps i3status rxvt-unicode ttf-croscore
-</pre></div>
-
+<p>Git version for development builds
+<div class="highlight"><pre><span></span>yay i3-gaps
+</pre></div></p>
+<p>Status bar, terminal, program launcher and font
+<div class="highlight"><pre><span></span>sudo pacman -S i3status rxvt-unicode dmenu ttf-croscore 
+</pre></div></p>
 <p>Create .xinitrc file
 <div class="highlight"><pre><span></span>echo exec i3 &gt; ~/.xinitrc
 </pre></div></p>
 <p>Start xorg
 <div class="highlight"><pre><span></span>startx
+</pre></div>
+Press enter to run the config wizard and generate the default config at ~/.config/i3/config</p>
+<h3 id="i3-gaps-configuration">i3-gaps configuration<a class="headerlink" href="#i3-gaps-configuration" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p>Source: <a href="https://github.com/Airblader/i3">https://github.com/Airblader/i3</a></p>
+</div>
+<p>Add this to i3 config to enable gaps between terminals</p>
+<div class="highlight"><pre><span></span>gaps inner 10
+gaps outer 0
+smart_gaps on
+</pre></div>
+
+<p>Add this for norwegian keyboard layout
+<div class="highlight"><pre><span></span>setxkbmap -layout no
 </pre></div></p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="i3-starting-with-no-fonts">i3 starting with no fonts<a class="headerlink" href="#i3-starting-with-no-fonts" title="Permanent link">&para;</a></h3>

@@ -217,10 +217,11 @@ sudo systemctl enable NetworkManager.service
 ```
 
 ### yay package manager
-Adds support for AUR and replaces pacman
 
 !!! note ""
     Source: https://github.com/Jguer/yay
+
+Adds support for AUR and replaces pacman functions
 
 #### yay installation
 ```
@@ -268,8 +269,15 @@ sudo nvidia-xconfig
     Source: https://i3wm.org/
 
 ### i3-gaps installation
+
+Git version for development builds
 ```
-yay i3-gaps i3status rxvt-unicode ttf-croscore
+yay i3-gaps
+```
+
+Status bar, terminal, program launcher and font
+```
+sudo pacman -S i3status rxvt-unicode dmenu ttf-croscore 
 ```
 
 Create .xinitrc file
@@ -281,7 +289,25 @@ Start xorg
 ```
 startx
 ```
+Press enter to run the config wizard and generate the default config at ~/.config/i3/config
 
+### i3-gaps configuration
+
+!!! note ""
+    Source: https://github.com/Airblader/i3
+
+Add this to i3 config to enable gaps between terminals
+
+```
+gaps inner 10
+gaps outer 0
+smart_gaps on
+```
+
+Add this for norwegian keyboard layout
+```
+setxkbmap -layout no
+```
 
 ## Troubleshooting
 

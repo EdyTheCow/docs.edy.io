@@ -48,6 +48,11 @@ sudo pacman -S firefox
 #### Extensions and config
 
 
+### Monitor layout setup
+TODO: xrandr
+
+
+
 ### KeepassXC
 KeepassXC is a KeepassX fork which adds additional features such as yubico key support
 
@@ -58,6 +63,20 @@ KeepassXC is a KeepassX fork which adds additional features such as yubico key s
 ```
 sudo pacman -S keepassxc
 ```
+
+### Rofi
+Replacement for dmenu
+
+#### Rofi installation
+```
+sudo pacman -S rofi
+```
+
+#### rofi i3 config
+```
+bindsym $mod+d exec rofi -show run
+```
+
 
 ## Configuration
 
