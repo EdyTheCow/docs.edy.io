@@ -44,7 +44,7 @@ Once disk is selected, create two partitions
     Make sure to put <b>1</b> after the [DISK]. We're formatting a partition. Not the whole disk. (Same with swap)
 
 ```
-mkfs.ext4 dev/[DISK]1
+mkfs.ext4 /dev/[DISK]1
 ```
 
 Setup swap
@@ -130,10 +130,6 @@ pacman -S grub
 grub-install --target=i386-pc /dev/[DISK]
 ```
 
-```
-grub-mkconfig -o /boot/grub/grub.cfg
-```
-
 Microcode
 ```
 pacman -S intel-ucode 
@@ -215,12 +211,7 @@ Installing the package
 sudo pacman -S networkmanager
 ```
 
-Start the service
-```
-sudo systemctl start NetworkManager.service
-```
-
-Enable to start it on boot
+Start and enable NetworkManager
 ```
 sudo systemctl enable NetworkManager.service
 ```
@@ -245,7 +236,7 @@ makepkg -si
 
 Installation
 ```
-sudo pacman -S xorg-server xorg-server-utils xorg-init
+sudo pacman -S xorg-server xorg-xinit xorg-xrandr
 ```
 
 
@@ -268,7 +259,7 @@ sudo pacman -S lib32-nvidia-utils lib32-nvidia-390xx-utils
 
 Configure xorg
 ```
-nvidia-xconfig
+sudo nvidia-xconfig
 ```
 
 ## i3-gaps
@@ -276,9 +267,9 @@ nvidia-xconfig
 !!! note ""
     Source: https://i3wm.org/
 
-Installation
+### i3-gaps installation
 ```
-
+yay i3-gaps i3status rxvt-unicode ttf-croscore
 ```
 
 Create .xinitrc file
@@ -291,6 +282,16 @@ Start xorg
 startx
 ```
 
+
+## Troubleshooting
+
+### i3 starting with no fonts
+If you forgot to install fonts, i3 may look something like that: https://i.imgur.com/wZWlqz0.png
+
+To fix it, install a font
+```
+sudo pacman -S ttf-croscore
+```
 
 ## Other resources
 - https://wiki.archlinux.org/index.php/Network_configuration

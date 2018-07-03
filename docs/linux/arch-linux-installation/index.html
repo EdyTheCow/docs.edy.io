@@ -606,6 +606,39 @@
     i3-gaps
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i3-gaps-installation" title="i3-gaps installation" class="md-nav__link">
+    i3-gaps installation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" title="Troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i3-starting-with-no-fonts" title="i3 starting with no fonts" class="md-nav__link">
+    i3 starting with no fonts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -906,6 +939,39 @@
     i3-gaps
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i3-gaps-installation" title="i3-gaps installation" class="md-nav__link">
+    i3-gaps installation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" title="Troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i3-starting-with-no-fonts" title="i3 starting with no fonts" class="md-nav__link">
+    i3 starting with no fonts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -984,7 +1050,7 @@
 <p class="admonition-title">Warning</p>
 <p>Make sure to put <b>1</b> after the [DISK]. We're formatting a partition. Not the whole disk. (Same with swap)</p>
 </div>
-<div class="highlight"><pre><span></span>mkfs.ext4 dev/[DISK]1
+<div class="highlight"><pre><span></span>mkfs.ext4 /dev/[DISK]1
 </pre></div>
 
 <p>Setup swap
@@ -1049,9 +1115,6 @@
 <div class="highlight"><pre><span></span>grub-install --target=i386-pc /dev/[DISK]
 </pre></div>
 
-<div class="highlight"><pre><span></span>grub-mkconfig -o /boot/grub/grub.cfg
-</pre></div>
-
 <p>Microcode
 <div class="highlight"><pre><span></span>pacman -S intel-ucode 
 </pre></div></p>
@@ -1106,10 +1169,7 @@
 <p>Installing the package
 <div class="highlight"><pre><span></span>sudo pacman -S networkmanager
 </pre></div></p>
-<p>Start the service
-<div class="highlight"><pre><span></span>sudo systemctl start NetworkManager.service
-</pre></div></p>
-<p>Enable to start it on boot
+<p>Start and enable NetworkManager
 <div class="highlight"><pre><span></span>sudo systemctl enable NetworkManager.service
 </pre></div></p>
 <h3 id="yay-package-manager">yay package manager<a class="headerlink" href="#yay-package-manager" title="Permanent link">&para;</a></h3>
@@ -1128,7 +1188,7 @@ makepkg -si
 <p>Source: <a href="https://wiki.archlinux.org/index.php/Xorg">https://wiki.archlinux.org/index.php/Xorg</a></p>
 </div>
 <p>Installation
-<div class="highlight"><pre><span></span>sudo pacman -S xorg-server xorg-server-utils xorg-init
+<div class="highlight"><pre><span></span>sudo pacman -S xorg-server xorg-xinit xorg-xrandr
 </pre></div></p>
 <h4 id="nvidia-drivers">Nvidia drivers<a class="headerlink" href="#nvidia-drivers" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
@@ -1142,20 +1202,27 @@ makepkg -si
 </pre></div></p>
 <p><b>Reboot required</b></p>
 <p>Configure xorg
-<div class="highlight"><pre><span></span>nvidia-xconfig
+<div class="highlight"><pre><span></span>sudo nvidia-xconfig
 </pre></div></p>
 <h2 id="i3-gaps">i3-gaps<a class="headerlink" href="#i3-gaps" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p>Source: <a href="https://i3wm.org/">https://i3wm.org/</a></p>
 </div>
-<p>Installation
-<div class="highlight"><pre><span></span>
-</pre></div></p>
+<h3 id="i3-gaps-installation">i3-gaps installation<a class="headerlink" href="#i3-gaps-installation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span>yay i3-gaps i3status rxvt-unicode ttf-croscore
+</pre></div>
+
 <p>Create .xinitrc file
 <div class="highlight"><pre><span></span>echo exec i3 &gt; ~/.xinitrc
 </pre></div></p>
 <p>Start xorg
 <div class="highlight"><pre><span></span>startx
+</pre></div></p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="i3-starting-with-no-fonts">i3 starting with no fonts<a class="headerlink" href="#i3-starting-with-no-fonts" title="Permanent link">&para;</a></h3>
+<p>If you forgot to install fonts, i3 may look something like that: <a href="https://i.imgur.com/wZWlqz0.png">https://i.imgur.com/wZWlqz0.png</a></p>
+<p>To fix it, install a font
+<div class="highlight"><pre><span></span>sudo pacman -S ttf-croscore
 </pre></div></p>
 <h2 id="other-resources">Other resources<a class="headerlink" href="#other-resources" title="Permanent link">&para;</a></h2>
 <ul>
