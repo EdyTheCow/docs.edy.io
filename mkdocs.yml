@@ -6,7 +6,7 @@ site_url: 'https://docs.edy.io'
 docs_dir: mkdocs
 site_dir: docs
 
-pages:
+nav:
   - Home: index.md
   - Other:
     - DockerPlex: other/docker-plex.md
