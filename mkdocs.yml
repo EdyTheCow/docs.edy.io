@@ -16,7 +16,7 @@ nav:
     - Linux Basics: linux/linux-basics.md
     - Arch Linux Installation: linux/arch-linux-installation.md
     - Arch Linux Config: linux/arch-linux-config.md
-
+    - zsh shell: linux/zsh-shell.md
 
 theme:
   name: 'material'
