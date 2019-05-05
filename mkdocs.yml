@@ -9,7 +9,7 @@ site_dir: docs
 nav:
   - Home: index.md
   - Other:
-    - Cubeworld: other/cubeworld.md
+    - CubeWorld: other/cubeworld.md
     - DockerPlex: other/docker-plex.md
     - Google Analytics: other/google-analytics.md
   - About: about.md
