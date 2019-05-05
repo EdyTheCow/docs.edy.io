@@ -4,8 +4,7 @@
 Client related instructions.
 
 ### Download
-No account required, simply launch "Cube.exe".
-https://link.edy.io/cubeworld
+No account required, simply launch "Cube.exe" - https://link.edy.io/cubeworld
 
 ### Server
 The 24/7 CubeWorld server IP:
@@ -13,12 +12,12 @@ The 24/7 CubeWorld server IP:
 cw.edy.io
 ```
 
-## Server
+## Server installtion
 Server related instructions.
-There are two ways of starting your own server. Instaiing everything manually or using docker.
+There are two ways of starting your own server. Installing everything manually or using docker.
 
-### Docker installtion
+### Docker
 TODO
 
-### Manual installtion
+### Manual
 TODO
