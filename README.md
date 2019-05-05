@@ -1,6 +1,8 @@
 # Moo Docs
 Documentation and notes for cows
 
+Travis CI https://travis-ci.org/EdyTheCow/docs.edy.io 
+
 ## Resources
 Mkdocs documentation<br />
 https://www.mkdocs.org/
