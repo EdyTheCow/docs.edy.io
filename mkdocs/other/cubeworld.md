@@ -1,7 +1,6 @@
 # CubeWorld
 
 ## Client
-Client related instructions.
 
 ### Download
 No account required, simply launch "Cube.exe" - https://link.edy.io/cubeworld
@@ -12,17 +11,13 @@ The 24/7 CubeWorld server IP:
 cw.edy.io
 ```
 
-## Server installtion
-Server related instructions.
-There are two ways of starting your own server. Installing everything manually or using docker.
+## Server
 
-### Docker
-
-#### Requirements
+### Requirements
 - Valid picroma account
 - Docker and Docker Compose
 
-#### Installation
+### Installation
 
 **Clone repository**
 ```
@@ -41,6 +36,3 @@ For initial launch you'll be asked for picroma account credentials to download t
 docker attach cubeworld_server
 ```
 After successful download of required files you can simply exit the process using `CTRL+C`. To start the server simply re-run `docker-compose up -d` in the directory with docker-compose.yml.
-
-### Manual
-TODO
