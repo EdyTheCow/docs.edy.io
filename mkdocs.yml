@@ -19,7 +19,9 @@ nav:
     - Google Analytics: other/google-analytics.md
   - Game Servers:
     - CubeWorld: game_servers/cubeworld.md
-
+    - Garrys Mod: game_servers/gmod.md
+    - Minecraft: game_servers/minecraft.md
+    - CSGO: game_servers/csgo.md
 theme:
   name: 'material'
   palette:
