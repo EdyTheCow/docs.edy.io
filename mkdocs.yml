@@ -1,5 +1,5 @@
 site_name: 'Moo Docs'
-site_description: 'Personal wiki for random stuff'
+site_description: 'Personal docs for random stuff'
 site_author: 'Edy'
 site_url: 'https://docs.edy.io'
 
@@ -8,16 +8,17 @@ site_dir: docs
 
 nav:
   - Home: index.md
-  - Other:
-    - CubeWorld: other/cubeworld.md
-    - DockerPlex: other/docker-plex.md
-    - Google Analytics: other/google-analytics.md
   - About: about.md
   - Linux:
     - Linux Basics: linux/linux-basics.md
     - Arch Linux Installation: linux/arch-linux-installation.md
     - Arch Linux Config: linux/arch-linux-config.md
     - zsh shell: linux/zsh-shell.md
+  - Other:
+    - DockerPlex: other/docker-plex.md
+    - Google Analytics: other/google-analytics.md
+  - Game Servers:
+    - CubeWorld: game_servers/cubeworld.md
 
 theme:
   name: 'material'
